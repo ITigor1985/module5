@@ -204,29 +204,125 @@
 // removeItem(itemToRemove) - принимает товар itemToRemove и удаляет его из массива товаров в свойстве items объекта который вызывает этот метод.
 // Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
 
-class Strorage {
+// class Storage {
+//     constructor(items = []) {
+//         this.items = items;
+//     }
+//     getItems() {
+//         return this.items;
+//     }
+//     addItem(newItem) {
+//         this.items.push(newItem);
+//     }
+//     removeItem(itemToRemove) {
+//         this.items.splice(
+//             this.items.indexOf(itemToRemove),
+//             this.items.indexOf(itemToRemove)
+//         );
+//     }
+// }
+// // Change code above this line
+// const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+// storage.addItem("Droid");
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// storage.removeItem("Prolonger");
+// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+//----------------------------------------------------------------------------------------------------
+//-------------------------------------------------------#11-------------------------------------------
+// Напиши класс StringBuilder, который принимает один параметр initialValue - произвольную строку, которая записывается на создаваемый объект в свойство value.
+
+// Объяви следующие методы класса:
+
+// getValue() - возвращает текущее значение свойства value.
+// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения свойства value объекта который вызывает этот метод.
+// padStart(str) - получает парметр str (строку) и добавляет её в начало значения свойства value объекта который вызывает этот метод.
+// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в конец значения свойства value объекта который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+// class StringBuilder {
+//     constructor(value) {
+//         this.value = value;
+//     }
+
+//     getValue() {
+//         return this.value;
+//     }
+//     padEnd(str) {
+//         this.value = `${this.value}${str}`;
+//     }
+//     padStart(str) {
+//         this.value = `${str}${this.value}`;
+//     }
+//     padBoth(str) {
+//         this.value = `${str}${this.value}${str}`;
+//     }
+// }
+
+// // Change code above this line
+// const builder = new StringBuilder(".");
+// console.log(builder.getValue()); // "."
+// builder.padStart("^");
+// console.log(builder.getValue()); // "^."
+// builder.padEnd("^");
+// console.log(builder.getValue()); // "^.^"
+// builder.padBoth("=");
+// console.log(builder.getValue()); // "=^.^="
+//----------------------------------------------------------------------------------------------------
+//-------------------------------------------------------#12-------------------------------------------
+// Выполни рефакторинг класса Car так, чтобы свойство brand было приватным и добавь два метода для публичного интерфейса, для чтения и изменения этого свойства.
+
+// getBrand() - возвращает значение приватного свойства brand.
+// changeBrand(newBrand) - изменяет значение приватного свойства brand на newBrand.
+// class Car {
+//   // Change code below this line
+//   #brand;
+//   constructor({ brand, model, price }) {
+//     this.#brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+
+//   getBrand() {
+//     return this.#brand;
+//   }
+
+//   changeBrand(newBrand) {
+//     this.#brand = newBrand;
+//   }
+
+//   // Change code above this line
+// }
+//----------------------------------------------------------------------------------------------------
+//-------------------------------------------------------#13------------------------------------------
+// Выполни рефакторинг класса Storage, сделав свойство items приватным.
+
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты.Пожалуйста ничего там не меняй.
+
+class Storage {
+    // Change code below this line
+
+    #items;
     constructor(items) {
-        this.items = items;
+        this.#items = items;
     }
+
     getItems() {
-        return this.items;
+        return this.#items;
     }
+
     addItem(newItem) {
-        this.items.push(newItem);
+        this.#items.push(newItem);
     }
+
     removeItem(itemToRemove) {
-        if (this.items.indexOf(itemToRemove)) {
-            this.items.slice(
-                this.items.indexOf(itemToRemove),
-                this.items.indexOf(itemToRemove) + 1
-            );
-        }
+        this.#items = this.#items.filter((item) => item !== itemToRemove);
     }
 }
+
 // Change code above this line
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Droid"]
